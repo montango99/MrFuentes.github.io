@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,700);
 
 body {
+  background-color: #F6EAE3;
+  color: #23212D;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1em;
   font-weight: 300;
@@ -13,23 +15,50 @@ body {
   margin: 4em auto;
   position: relative;
   max-width:46em;
-  --before-top: 2em;
 }
 
-.timeline:before {
+.timeline-event {
+  display: flex;
+  position: relative;
+}
+
+@keyframes flexanimation {
+  100% {
+    flex-grow: 5;
+  }
+}
+
+.timeline-event:before {
   background-color:black;
   content: '';
   margin-left: -1px;
   position: absolute;
-  top: var(--before-top);
-  left: 2em;
+  left: -0.5em;
   width: 2px;
-  height: 100%;
+  height: 89%;
   transition: top .2s ease-in;
 }
 
-.timeline-event {
-  position: relative;
+#first {
+  --before-top: 2em;
+}
+
+#first:before {
+  top: var(--before-top);
+}
+
+#second {
+  --before-top: 2em;
+}
+#second:before {
+  top: var(--before-top);
+}
+#third {
+  --before-top: 2em;
+}
+
+#third:before {
+  top: var(--before-top);
 }
 
 .timeline-event-copy {
@@ -41,11 +70,15 @@ body {
 }
 
 .timeline-event-copy h3 {
+  position: relative;
+  top: -2em;
   font-size: 1.75em;
   font-weight: 1;
 }
 
 .timeline-event-copy h4 {
+  position: relative;
+  top: -4em;
   font-size: 1.2em;
   margin-bottom: 1.2em;
   font-weight: 1;
@@ -55,13 +88,23 @@ body {
   font-weight: 700;
 }
 
+.timeline-event-copy hr {
+  position: relative;
+  top: -5em;
+  transition: position .2s ease-in;
+}
 
 .timeline-event-copy p:not(.timeline-event-thumbnail) {
+  position:relative;
+  top: -4em;
   padding-bottom:1.2em;
+  opacity: 0;
+  max-height: 0px;
+  transition:  opacity .5s linear, max-height 1s linear;
 }
 
 .timeline-event-icon {
-  background-color: black;
+  background-color: #23212D;
   display: block;
   margin: 0.5em 0.5em 0.5em -0.5em;
   position: absolute;
@@ -73,21 +116,11 @@ body {
   transition: transform .2s ease-in, background-color .4s ease-in;
 }
 
-.timeline-event-icon:hover {
-  transform: rotate(0deg);
-  background-color: red;
-  transition: transform .2s ease-in, background-color .4s ease-in;
-}
-
-.timeline-event-icon:hover + #about{
-  background:red;
-}
-
 .timeline-event-thumbnail {
-  background:black;
-  background: linear-gradient(90deg, rgba(189,0,0,1) 40%, rgba(255,154,35,1) 50%, rgba(0,0,0,1) 60%) right;
+  background: #F6EAE3;
+  background: linear-gradient(90deg, rgba(105,124,128,1) 40%, rgba(27,183,191,1) 50%, rgba(35,33,45,1) 60%) right;
   background-size:300%;
-  color: white;
+  color: #F6EAE3;
   display: inline-block;
   padding-left: 5px;
   padding-right: 5px;
@@ -95,8 +128,4 @@ body {
   transition: .4s ease-in;
   position: relative;
   top: -.85em;
-}
-
-.timeline-event-thumbnail:hover {
-  background-position: left;
 }
